@@ -1,0 +1,50 @@
+[
+  {
+    "model": "slots.symbol",
+    "pk": 1,
+    "fields": {
+      "name": "diamond",
+      "image_path": "graphics/0/symbols/0_diamond.png",
+      "payout_multiplier": "5"
+    }
+  },
+  {
+    "model": "slots.symbol",
+    "pk": 2,
+    "fields": {
+      "name": "floppy",
+      "image_path": "graphics/0/symbols/0_floppy.png",
+      "payout_multiplier": "2.50"
+    }
+  },
+  {
+    "model": "slots.symbol",
+    "pk": 3,
+    "fields": {
+      "name": "hourglass",
+      "image_path": "graphics/0/symbols/0_hourglass.png",
+      "payout_multiplier": "1"
+
+    }
+  },
+  {
+    "model": "slots.symbol",
+    "pk": 4,
+    "fields": {
+      "name": "seven",
+      "image_path": "graphics/0/symbols/0_seven.png",
+      "payout_multiplier": "10"
+
+    }
+  },
+  {
+    "model": "slots.symbol",
+    "pk": 5,
+    "fields": {
+      "name": "telephone",
+      "image_path": "graphics/0/symbols/0_telephone.png",
+      "payout_multiplier": "3"
+
+    }
+  }
+]
