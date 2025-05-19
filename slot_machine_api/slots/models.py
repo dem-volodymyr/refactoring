@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from decimal import Decimal
 
 
 class Symbol(models.Model):
@@ -15,9 +16,9 @@ class Symbol(models.Model):
 
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='player')
-    balance = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
-    total_won = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    total_wager = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('1000.00'))
+    total_won = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
+    total_wager = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
 
     def __str__(self):
         return f"Player: {self.user.username}"
@@ -26,7 +27,7 @@ class Player(models.Model):
 class Game(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='games')
-    machine_balance = models.DecimalField(max_digits=10, decimal_places=2, default=10000.00)
+    machine_balance = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('10000.00'))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -38,7 +39,7 @@ class Spin(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='spins')
     bet_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payout = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    payout = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     result = models.JSONField()  # Store the spin result as JSON
     win_data = models.JSONField(null=True, blank=True)  # Win information
     timestamp = models.DateTimeField(auto_now_add=True)
